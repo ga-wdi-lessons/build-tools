@@ -46,16 +46,20 @@ Taking things like SASS, CoffeeScript, HAML, etc and converting it into css/html
 <br>
 </details>
 
-
-Build tools compling our code so we don't have to do it manually and repeatedly 
+---------
+In summary, build tools help us to compile our code so we don't have to do it manually and repeatedly.
 
 ## Grunt
 
+
+![Grunt](grunt.jpg)
+
 >"Why use a task runner?
 In one word: automation."
-> - Grunt Documentation
 
-Grunt is an Javascript automation tool used for various front-end tasks including refreshing the browser when you change a script, minifying code, running tests.
+> ~ Grunt Documentation
+
+Grunt is a popular Javascript automation tool used for various front-end tasks including refreshing the browser when you change a script, minifying code, running tests, etc..
 
 It's really similar to `rake` in Ruby!
 
@@ -156,59 +160,56 @@ Running "jshint:all" (jshint) task
 
 Done.
 ```
-### You-do: Grunt SASS (20 min)
+### You-do: Grunt SASS (25 min)
 
-## Jenkins
+## Webpack
 
-## Travis
+[Webpack Documentation](https://webpack.github.io/)
 
-## Bower
+Webpack is a code bundler.
 
-## Webpack (React Preview :) )
+It is used to bundle JavaScript files to run in our browsers, and can be used for transforming, bundling, or packaging assets and resources.
 
-3 Inital Steps:
+In essence, it takes your code, transforms and bundles it, then returns a brand new version of your code.
 
-Like a machine, apply transformations, what get out is a bundle of code. Complicated but powerful.
+We will be using Webpack with React!
 
-Webpack, at its core, is a code bundler. It takes your code, transforms and bundles it, then returns a brand new version of your code.
+## I-DO: Initial Webpack Installation
 
-Each loader is an object, the first key value pair is what tpyoe of file you want to apply it to, ex anything that ends in .js, what types of files do we not want to. The last one, we want to apply loader(package),
+Each loader is an object, the first key value pair is what type of file you want to apply it to, ex anything that ends in `.js`, and what types of files do we not want to. The last one, we want to apply loader(package),
 
-preformance reasons, different in production.
+After the loader is applied, specify where to send the results. Specify an output filename(what it is called), and then tell it the path(where to put it)
 
-After the loader is applied, specifiy where to send the results. Specificy an output filename(what it is called), and then tell it the path(where to put it)
+Convention put it in the `'dist'`, or `distribution` directory, the folder will be creating by using this.
 
--convention put it in the 'dist', distribution, the folder will be creating by using this.
 
-Issue?
+Let's load another package:
 
-How do you tell html file to load that file.
+`webpack html plugin`
 
-Load another package
-webpack html plugin
+The last property is where where you want script tag to go, head or body, that will be pointing to our bundled code
 
-last one-where do you want script tag to go, head or body, pointing to our bundle code
-
-Everytime it resaves
-
-pass in config as object to plugins
+Pass in config as object to plugins
 
 -run webpack
 
 npm install -g webpack
 
-1. watch-waits for any changes
+1. watch, waits for any changes
 2. minifies code
 
-`Babel.js`: Another transformation anything in ES6
+`Babel.js`:
 
-in package.json, there is a scripts key-
+Finally, in package.json, we need to add this to our scripts key:
 
-"start": 'webpack' -w'
+`"start": 'webpack -w'`
 
+
+## Travis
 
 ## Closing (5 min)
 
 ### Additional Resources
 
 [Grunt Tutorial](http://www.brianchu.com/blog/2013/07/11/grunt-by-example-a-tutorial-for-javascripts-task-runner/)
+[Travis](https://travis-ci.org/)
