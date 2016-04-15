@@ -23,7 +23,7 @@ Code in which all unnecessary characters have been removed from source code with
 
 <details>
 <summary>
-When have you seen minified code before?</summary>
+Q. When have you seen minified code before?</summary>
 <br>
 
 ```
