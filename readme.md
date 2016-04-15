@@ -203,6 +203,8 @@ Let's get more practice writing gulp `tasks`. Let's write a task that will conso
 
 Gulp has many additional plugins that we can use in our applications. We need to install them each individually using `npm install <dependency-name> --save-dev`
 
+## Break (10 min)
+
 ## You-Do: Jshint Plugin Example (15 min)
 
 We are going to be working with the `jshint` and `jshint-stylish` plugins so we can easily identify any javascript errors in our code!
@@ -473,6 +475,7 @@ Because we used `default`, gulp will automatically execute the `default` command
 [13:25:59] Finished 'default' after 3.63 μs
 
 ```
+## Break (10 min)
 
 ## Webpack
 
