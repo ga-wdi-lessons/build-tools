@@ -692,7 +692,41 @@ And remove ` --content-base build` from your `package.json`
 
 ## You Do: Add in CSS watch!
 
+We already have the setup done, so adding in CSS watch is simple!
+
+We'll need another package for this:
+
+`npm i css-loader style-loader --save-dev`
+
+We then need to add the use of this package in as a module within our `common` variable after `output`:
+
+```js
+,
+module: {
+  loaders: [
+    {
+      // Test expects a RegExp! Note the slashes!
+      test: /\.css$/,
+      loaders: ['style', 'css'],
+      // Include accepts either a path or an array of paths.
+      include: PATHS.css
+    }
+  ]
+}
+```
+
+If you run it now, an error about "Promise" will pop up. This is an ES6 bug that can be fixed with [this](https://github.com/stefanpenner/es6-promise#nodejs):
+
+`npm install es6-promise`
+
+`var Promise = require('es6-promise').Promise;`
+
+Something still seems off.. Notice the `include:`.  That is pointing to a `PATHS.css`, but we haven't created that yet! Let's go ahead and add that in.  Inside your PATHS object, add `css: path.join(__dirname, 'css')`. Then, within your `common.entry` include `css: PATHS.css`
+
+Go to your `style.css` and change the background to green, what happens?? Notice how the page does *not* refresh!
+
 ### Bonus: Figure out SASS configuration
+
 
 ## Closing (5 min)
 
