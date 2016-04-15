@@ -393,6 +393,10 @@ And remove ` --content-base build` from your `package.json`
 
 **COOL**. Everytime we make a change to the js file and save the browser is automatically updated!
 
+## You Do: Add in CSS watch!
+
+### Bonus: Figure out SASS configuration
+
 ## Travis
 
 ## Closing (5 min)
