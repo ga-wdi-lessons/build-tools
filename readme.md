@@ -10,7 +10,7 @@
 
 <details>
 <summary>
-What is minified code and why do we do it use it?</summary>
+Q. What is minified code and why do we do it use it?</summary>
 <br>
 
 ```
@@ -36,7 +36,7 @@ CDN files
 
 <details>
 <summary>
-What is complied code and what is used for?</summary>
+Q. What is complied code and what is used for?</summary>
 <br>
 
 ```
@@ -67,7 +67,7 @@ Fork and Clone this Repo: https://github.com/ga-wdi-exercises/gulp-bamsay
 
 [Solution Code](https://github.com/ga-wdi-exercises/gulp-bamsay/tree/jshint-solution)
 
-#### Installation
+### Installation
 
 ```bash
 $ npm install gulp -g
@@ -100,17 +100,17 @@ $ gulp
 ```
 >Uh oh! - we ran into a problem! We need to define a `gulp task`
 
-#### Gulp Tasks
+### Gulp Tasks
 
 <details>
 <summary>
-What is a task?</summary>
+Q. What is a task?</summary>
 <br>
 
 ```
 
 In Gulp, we create tasks that can transform our code.
-A task may perform one job; it may also perform many at once.
+A task may perform one job, or it can perform many at once.
 
 ```
 <br>
@@ -121,7 +121,7 @@ A task may perform one job; it may also perform many at once.
 
 In our `gulpfile.js` we need to include the gulp module. To do this, we should define a variable: `var gulp = require('gulp');` This will allow us to call upon Gulp to create a task.
 
-#### My First (Default) Task
+### My First (Default) Task
 
 By default, Gulp requires a default task. It is the first task that Gulp will look for when reading your `gulpfile.js`.
 
@@ -152,18 +152,18 @@ I am the default task!
 
 <details>
 <summary>
-Does the string `'default'` matter what we call it?
+Q. Does the string `'default'` matter what we call it?
 </summary>
 <br>
 
 ```
-Yes, and no. While you can certainly change `default` to `pizza`, it could not be semantic or convention.
+Yes, and no. While you can certainly change `default` to `pizza`, it would not be very descriptive of the task.
 
-Also, whatever you name gulp.task('name', callbackFunction)
+Also, whatever you define 'name' as in your task: gulp.task('name', callbackFunction)
 
-To run gulp in our command line we need to do:
+You need to run the following in our command line:
 
-`$ gulp <name>`
+$ gulp <name>
 
 ```
 <br>
@@ -183,26 +183,26 @@ Let's Review and Answer questions!
 
 Gulp has many additional plugins that we can use in our applications. We need to install them each individually using `npm install <dependency-name> --save-dev`
 
->Note we are having to --save-dev instead of --save. This is add separate  `"devDependencies"` object in which we will be saving our dependences. Don't worry too much about the difference for now, just know these would be used differently in production!
+>Note we writing `--save-dev` instead of `--save`.
+>This adds a separate  `"devDependencies"` object in which we will be saving our dependences. Don't worry too much about the difference for now, just know these plugins would be used differently in production!
 
 ## You-Do: Jshint Plugin Example (15 min)
 
-We are going to be working with Jshint plugin and Jshint stylish so we can easily identify any javascript errors in our code!
+We are going to be working with the `jshint` and `jshint-stylish` plugins so we can easily identify any javascript errors in our code!
 
 ```bash
 $ npm install jshint gulp-jshint --save-dev
 $ npm install --save-dev jshint-stylish
 ```
 
-In our `gulpfile.js`, let's add the following modules for jshint:
+In our `gulpfile.js`, let's add the following modules for `jshint`:
 
 ```js
 var gulp   = require('gulp');
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 ```
-
->Nothing new here, just requiring our dependencies
+>Nothing new here, just requiring our dependencies we will be using
 
 Now, let's add our task!
 
@@ -215,12 +215,13 @@ gulp.task('jshint', function() {
 ```
 <details>
 <summary>
-What is `gulp.src`?
+Q. What is `gulp.src`?
 </summary>
 <br>
 
 ```
-`gulp.src` is specifying our file source paths. It can also take an array of source paths.
+
+gulp.src is specifying our file source paths. It can also take an array of source paths.
 
 
 ```
@@ -231,7 +232,7 @@ What is `gulp.src`?
 
 <details>
 <summary>
-What do you think `'./js/*.js'` represents ?
+Q. What do you think `'./js/*.js'` represents ?
 </summary>
 <br>
 
@@ -246,18 +247,20 @@ Linting all of of javascript files in our `js` directory
 
 <details>
 <summary>
-What is `.pipe()` in gulp?
+Q. What is `.pipe()` in gulp?
 </summary>
 <br>
 
 ```
-.pipe() is used to pipe the source file(s) into a plugin. These Pipes chain tasks together so you can add as many plugins as you need!
+.pipe() is used to pipe the source file(s) into a plugin. These pipes can chain tasks together so you can add as many plugins as you need!
 
 ```
 <br>
 <br>
 </details>
+--------------
 
+Now, run the following in your command line:
 
 ``` bash
 $ gulp jshint
@@ -267,28 +270,37 @@ $ gulp jshint
 
 ## STOP
 
-### We-do: Gulp SASS (25 min)
+## Review
 
-## Gulp-Sass
+Let's Review and Answer questions!
 
-Let's use Gulp to compile our `SASS`! We are going to be using the following `gulp-sass` plugin.
+## We-do: Gulp SASS (25 min)
 
-[Gulp-Sass Documentation npm](https://www.npmjs.com/package/gulp-sass).
+### Gulp-Sass
 
-Feel free to continue along on the same `gulpfile.js`. However, if you can check out the `gulp-sass-starter` as well.
+Let's use Gulp to compile our `sass`!
 
+We are going to be using the following `gulp-sass` plugin.
+
+[Gulp-Sass](https://www.npmjs.com/package/gulp-sass).
+
+Feel free to continue along on the same `gulpfile.js`. However, always feel free to checkout to `linter-solution` as well for working code.
+
+First, let's install and save our plugin:
 
 ```bash
 $ npm install gulp-sass --save-dev
 
 ```
+
+Next, let's require the `gulp-sass` dependency:
+
 ```js
 var gulp = require('gulp');
 var sass = require("gulp-sass");
 ```
->requiring the dependency for gulp-sass
 
-And then let's add the following in our code:
+And then let's add a new task:
 
 ```js
 gulp.task('sass', function () {
@@ -300,15 +312,16 @@ gulp.task('sass', function () {
 
 <details>
 <summary>
-What do we see here in this task thats different?
+Q. What do we see here in this task thats different?
 </summary>
 <br>
 
 ```
-1. sass.logError which will display an error
+1. sass.logError, which will display an error
+
 2. gulp.dest()
 
-`gulp.dest` will copies our results to a given directory. In this case to our `css` directory.
+* `gulp.dest` will copies our results to a given directory. In this case to our `css` directory.
 
 ```
 <br>
@@ -322,10 +335,15 @@ $ gulp sass
 
 Great, it worked? But how is that helpful when compiling sass?
 
-### Gulp Watcher & Connect
-We are now going to install two additional gulp plugins/dependencies:
+### Gulp Watch & Connect
 
-We are going to add these dependencies so any of our sass code changes is reflected in the browser without manual reload or page refresh. We will be integrating all the tasks to help automate our workflow.
+We are going to add these two dependencies as well! Our goal is for us to see any reflected sass changes without manually server reloading or browser refreshing.
+
+Finally, we will be integrating all the tasks to help automate our workflow.
+
+[Gulp Watch](https://www.npmjs.com/package/gulp-watch)
+
+[Gulp Connect](https://www.npmjs.com/package/gulp-connect)
 
 
 ```bash
@@ -335,10 +353,6 @@ $ npm install --save-dev gulp-watch.
 
 ```
 
-[Gulp Watch](https://www.npmjs.com/package/gulp-watch)
-
-[Gulp Connect](https://www.npmjs.com/package/gulp-connect)
-
 ```js
 
 var gulp = require('gulp');
@@ -347,9 +361,7 @@ var watch = require('gulp-watch');
 var connect = require('gulp-connect');
 ```
 
-
 ```js
-// Watch Files For Changes
 gulp.task('watch', function () {
  gulp.watch('./css/**/*.scss', ['sass']);
 });
@@ -364,20 +376,34 @@ gulp.task('connect', function() {
 });
 
 ```
-
-
 <details>
 <summary>
-What do you think `connect.server({livereload: true})` is doing?
+Q. What `gulp.watch()` doing ?
 </summary>
 <br>
 
 ```
-
+watching our sass file for changes
 ```
 <br>
 <br>
 </details>
+
+
+<details>
+<summary>
+Q. What is `connect.server({livereload: true})` doing?
+</summary>
+<br>
+
+```
+Reloading without manually writing a command in terminal
+```
+<br>
+<br>
+</details>
+
+------
 
 Let's now add `.pipe(connect.reload())` to our `sass` task:
 
@@ -404,7 +430,7 @@ $ gulp
 
 <details>
 <summary>
-Why do we not need to specify our task in the above command?
+Q. Why do we not need to specify our task in the above command?
 </summary>
 <br>
 
