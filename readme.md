@@ -4,6 +4,7 @@
 
 * Define build tools
 * Introduce available build tools
+* Compare and contrast Gulp to Rake
 * Use build tools to automate workflow
 
 ## Framing (5 min)
@@ -57,9 +58,20 @@ Gulp is an popular open-source automation tool built on Node.js that runs tasks 
 
 It is commonly used for bundling, minificiation, ES6 support, etc..
 
+[Gulp Documentation](http://gulpjs.com/)
+
 It's really similar to `rake` in Ruby!
 
-[Gulp Documentation](http://gulpjs.com/)
+Rake is used to help automate a bunch of tasks for us when building Rails applications.
+
+For example, when running the following:
+
+```
+$ rake db:migrate
+
+```
+How would we accomplish this without using `rake` ?
+
 
 ## You-Do: Gulp Linter Example (15 min)
 
@@ -80,6 +92,8 @@ $ npm install gulp --save-dev
 ```
 >install as dependency in project
 
+>Note we writing `--save-dev` instead of `--save`.
+>This adds a separate  `"devDependencies"` object in which we will be saving our dependences. Don't worry too much about the difference for now, just know these plugins would be used differently in production!
 
 ```bash
 $ touch `gulpfile.js`
@@ -177,14 +191,17 @@ $ gulp <name>
 
 Let's Review and Answer questions!
 
+## You-Do: Write your own gulp task (5 min)
+
+Let's get more practice writing gulp `tasks`. Let's write a task that will console.log today's date once's it run.
+
+[See Solution]('https://github.com/ga-wdi-lessons/build-tools/gulpDateTask.js')
+
 ## Plugins (5 min)
 
 [Gulp plugins](http://gulpjs.com/plugins/)
 
 Gulp has many additional plugins that we can use in our applications. We need to install them each individually using `npm install <dependency-name> --save-dev`
-
->Note we writing `--save-dev` instead of `--save`.
->This adds a separate  `"devDependencies"` object in which we will be saving our dependences. Don't worry too much about the difference for now, just know these plugins would be used differently in production!
 
 ## You-Do: Jshint Plugin Example (15 min)
 
@@ -192,7 +209,7 @@ We are going to be working with the `jshint` and `jshint-stylish` plugins so we 
 
 ```bash
 $ npm install jshint gulp-jshint --save-dev
-$ npm install --save-dev jshint-stylish
+$ npm install jshint-stylish --save-dev
 ```
 
 In our `gulpfile.js`, let's add the following modules for `jshint`:
@@ -252,7 +269,7 @@ Q. What is `.pipe()` in gulp?
 <br>
 
 ```
-.pipe() is used to pipe the source file(s) into a plugin. These pipes can chain tasks together so you can add as many plugins as you need!
+.pipe() is used to pipe the source file/files into a plugin. These pipes can chain tasks together so you can add as many dependencies as you need!
 
 ```
 <br>
@@ -266,11 +283,13 @@ Now, run the following in your command line:
 $ gulp jshint
 
 ```
+>Note, we can also add this as our `default` task. Then, we would simply run `$ gulp` instead.
+
 ## Bonus
 
 ## STOP
 
-## Review
+## Review (5 min)
 
 Let's Review and Answer questions!
 
@@ -332,14 +351,13 @@ Q. What do we see here in this task thats different?
 $ gulp sass
 
 ```
-
-Great, it worked? But how is that helpful when compiling sass?
+Great, it worked! But how is that helpful to our workflow?
 
 ### Gulp Watch & Connect
 
-We are going to add these two dependencies as well! Our goal is for us to see any reflected sass changes without manually server reloading or browser refreshing.
+We are going to add these two dependencies as well! Our goal is for us to see any reflected sass changes without manually reloading the server or refreshing our browser.
 
-Finally, we will be integrating all the tasks to help automate our workflow.
+Finally, we will be integrating all the tasks to help automate our workflow at the end.
 
 [Gulp Watch](https://www.npmjs.com/package/gulp-watch)
 
@@ -347,9 +365,9 @@ Finally, we will be integrating all the tasks to help automate our workflow.
 
 
 ```bash
-$  npm install --save-dev gulp-watch
+$  npm install gulp-watch --save-dev
 
-$ npm install --save-dev gulp-connect
+$ npm install gulp-connect --save-dev
 
 ```
 
@@ -383,7 +401,7 @@ Q. What `gulp.watch()` doing ?
 <br>
 
 ```
-watching our sass file for changes
+"watching" our sass file for changes
 ```
 <br>
 <br>
@@ -441,7 +459,6 @@ Because we used `default`, gulp will automatically execute the `default` command
 <br>
 </details>
 
-
 ```
 [13:25:59] Using gulpfile ~/wdi8/sandbox/bamsay/gulpfile.js
 [13:25:59] Starting 'sass'...
@@ -456,7 +473,6 @@ Because we used `default`, gulp will automatically execute the `default` command
 [13:25:59] Finished 'default' after 3.63 μs
 
 ```
-
 
 ## Webpack
 
@@ -729,6 +745,14 @@ Go to your `style.css` and change the background to green, what happens?? Notice
 
 
 ## Closing (5 min)
+
+## Quiz Questions:
+
+1. What type of tasks can build tools help us to automate?
+2. What is Gulp and what environment is it used for?
+3. Where do we save all of our Gulp dependencies?
+4. What is the difference between `gulp.src()` and `gulp.dest()`?
+5. What does the `gulp connect` plugin allows us to do?
 
 ### Additional Resources
 
