@@ -692,12 +692,15 @@ And remove ` --content-base build` from your `package.json`
 
 ### Bonus: Figure out SASS configuration
 
-## Travis
-
 ## Closing (5 min)
 
 ### Additional Resources
+[Webpack as middleware](https://webpack.github.io/docs/webpack-dev-middleware.html)
+
+Additional Build Tools to Research:
 
 [Grunt Tutorial](http://www.brianchu.com/blog/2013/07/11/grunt-by-example-a-tutorial-for-javascripts-task-runner/)
+
 [Travis](https://travis-ci.org/)
-[Webpack as middleware](https://webpack.github.io/docs/webpack-dev-middleware.html)
+
+[Jenkins](https://jenkins.io/)
