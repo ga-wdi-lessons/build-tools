@@ -736,7 +736,7 @@ Go to your `style.css` and change the background to green, what happens?? Notice
 
 [Webpack compared](http://survivejs.com/webpack/webpack-compared/)
 
-Additional Build Tools to Research:
+[webpack tutorials](http://survivejs.com/webpack_react/developing_with_webpack/)
 
 [Gulp Tutorial](https://scotch.io/tutorials/automate-your-tasks-easily-with-gulp-js)
 
