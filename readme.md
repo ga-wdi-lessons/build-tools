@@ -462,13 +462,15 @@ Because we used `default`, gulp will automatically execute the `default` command
 
 [Webpack Documentation](https://webpack.github.io/)
 
-Webpack is a code bundler.
-
-It is used to bundle JavaScript files to run in our browsers, and can be used for transforming, bundling, or packaging assets and resources.
+webpack is known as a "code bundler". It is used to bundle JavaScript files to run in our browsers, and can be used for transforming, bundling, or packaging assets and resources.
 
 In essence, it takes your code, transforms and bundles it, then returns a brand new version of your code.
 
 We will be using Webpack with React!
+
+While Gulp is known as a "task runner", webpack does a little more. Task runners will compile your code as shown in the previous section. Webpack similarly can compile code, but takes things a step further by *bundling* modules and files together. What does that mean exactly?
+
+In short, it allows for faster development.  Task runners like Gulp and Grunt need to rebuild the entire application every time you save.  Bundlers like webpack only rebuild the modules you have specifically edited!
 
 ### You-do: Setup
 
@@ -518,9 +520,9 @@ To actually configure our webpack, we need to create a new file in the root of o
 Here we will need to define the folders and files that we want bundled, as well as any additional functionality from our tool. We are going to add in a few pieces of code:
 
 ```js
-const path = require('path');
+var path = require('path');
 
-const PATHS = {
+var PATHS = {
   js: path.join(__dirname, 'js'),
   build: path.join(__dirname, 'build')
 };
@@ -584,7 +586,7 @@ Check out your public folder and see what file was added in!
 
 Having to run `webpack` every time you make a change will get frustrating (and boring) quickly. We can set up the `webpack-dev-server` to help us out!
 
-One of the best features of the dev server is Hot Module Replacement (HMR). The module will allow us to make changes, and see them automatically without a full page refresh.
+One of the best features of the dev server is [Hot Module Replacement](https://webpack.github.io/docs/hot-module-replacement.html) (HMR). This is a feature provided by webpack that will update specific modules live. In other words, we can potentially update specific parts of our app without having the refresh the entire page!
 
 To get started, run the following in you command line:
 
@@ -609,15 +611,15 @@ This package allows us to merge objects together. In this case, we will be mergi
 In webpack.config.js, include the following on line 2:
 
 ```js
-const merge = require('webpack-merge');
-const webpack = require('webpack');
-const TARGET = process.env.npm_lifecycle_event;
+var merge = require('webpack-merge');
+var webpack = require('webpack');
+var TARGET = process.env.npm_lifecycle_event;
 ```
 
 We will then replace everything from `module.exports` and down with the following:
 
 ```js
-const common = {
+var common = {
 
   // Entry accepts a path or an object of entries. We'll be using the
   // latter form given it's convenient with more complex configurations.
@@ -695,12 +697,13 @@ And remove ` --content-base build` from your `package.json`
 ## Closing (5 min)
 
 ### Additional Resources
+
 [Webpack as middleware](https://webpack.github.io/docs/webpack-dev-middleware.html)
+
+[Webpack compared](http://survivejs.com/webpack/webpack-compared/)
 
 Additional Build Tools to Research:
 
+[Gulp Tutorial](https://scotch.io/tutorials/automate-your-tasks-easily-with-gulp-js)
+
 [Grunt Tutorial](http://www.brianchu.com/blog/2013/07/11/grunt-by-example-a-tutorial-for-javascripts-task-runner/)
-
-[Travis](https://travis-ci.org/)
-
-[Jenkins](https://jenkins.io/)
