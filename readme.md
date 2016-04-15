@@ -175,14 +175,13 @@ In essence, it takes your code, transforms and bundles it, then returns a brand 
 
 We will be using Webpack with React!
 
-## You-do: Setup
+### You-do: Setup
 
-Checkout back to the starter branch of Bamsay, and then `git checkout -b <branch name>` to a new branch.
+`git checkout webpack_starter`
 
 run: `npm install webpack --save-dev`
 
 Try testing it out by running `webpack` in the terminal
->if that doesn't work, try `node_modules/.bin/webpack`
 
 You should see something like:
 
@@ -202,36 +201,197 @@ Options:
 Output filename not configured.
 ```
 
-## We-Do: Initial Webpack Installation
+<details>
+<summary>
+What does this tell us?
+</summary>
+<br>
 
-Each loader is an object, the first key value pair is what type of file you want to apply it to, ex anything that ends in `.js`, and what types of files do we not want to. The last one, we want to apply loader(package),
+```
+We haven't configured what we actually want to do with webpack yet!
+```
+<br>
+<br>
+</details>
 
-After the loader is applied, specify where to send the results. Specify an output filename(what it is called), and then tell it the path(where to put it)
+## STOP
 
-Convention put it in the `'dist'`, or `distribution` directory, the folder will be creating by using this.
+### You Do: Configuring the Webpack
 
+To actually configure our webpack, we need to create a new file in the root of our directory: `webpack.config.js`
 
-Let's load another package:
+Here we will need to define the folders and files that we want bundled, as well as any additional functionality from our tool. We are going to add in a few pieces of code:
 
-`webpack html plugin`
+```js
+const path = require('path');
 
-The last property is where where you want script tag to go, head or body, that will be pointing to our bundled code
+const PATHS = {
+  js: path.join(__dirname, 'js'),
+  build: path.join(__dirname, 'build')
+};
+```
 
-Pass in config as object to plugins
+<details>
+<summary>
+What do you think this first part is doing?
+</summary>
+<br>
 
--run webpack
+```
+This simply defines two folders within our app that we will be either reading or modifying with webpack.
 
-npm install -g webpack
+*Note* 'path' is a node method
+```
+<br>
+<br>
+</details>
 
-1. watch, waits for any changes
-2. minifies code
+```js
+module.exports = {
+  // Entry accepts a path or an object of entries. We'll be using the
+  // latter form given it's convenient with more complex configurations.
+  entry: {
+    js: PATHS.js
+  }
+```
 
-`Babel.js`:
+<details>
+<summary>
+What do you think this next section does?
+</summary>
+<br>
 
-Finally, in package.json, we need to add this to our scripts key:
+```
+Here we are defining the entry point of our webpack. In other words, whatdirectory do we want to look into and bundle?
+```
+<br>
+<br>
+</details>
 
-`"start": 'webpack -w'`
+Lastly, we will need to define the output. Where are we going to put thebundled code?
 
+```js
+,
+  output: {
+    path: PATHS.build,
+    filename: 'bundle.js'
+  }
+};
+```  
+
+**Try running `webpack` in your terminal again. What happens?**
+
+Check out your public folder and see what file was added in!
+
+## STOP
+
+### Setting up Webpack Server
+
+Having to run `webpack` every time you make a change will get frustrating (and boring) quickly. We can set up the `webpack-dev-server` to help us out!
+
+One of the best features of the dev server is Hot Module Replacement (HMR). The module will allow us to make changes, and see them automatically without a full page refresh.
+
+To get started, run the following in you command line:
+
+`npm i webpack-dev-server --save-dev`
+
+We can now add this directly to our `package.json` file, allowing us the ability to start up our application immediately on the webpack dev server. Include the following in your `scripts` object in the `package.json` file:
+
+`"start": "webpack-dev-server --content-base build"`
+
+Go ahead and run `npm start` in your terminal. You should see something like:
+
+![npm Start](npmStart.png)
+
+If you open your browser to `localhost:8080`, you should see your index.html and any html rendered through your index.js file on the browser!
+
+This is cool and all, but not really any different than before other than running a different command in your terminal. We want to be able to make changes to our code and see the updates without having to do any additional refreshing.
+
+We will have to install another package to get this up and running: `npm i webpack-merge --save-dev`
+
+This package allows us to merge objects together. In this case, we will be merging the object that sets our paths, with HMR.
+
+In webpack.config.js, include the following on line 2:
+
+```js
+const merge = require('webpack-merge');
+const webpack = require('webpack');
+const TARGET = process.env.npm_lifecycle_event;
+```
+
+We will then replace everything from `module.exports` and down with the following:
+
+```js
+const common = {
+
+  // Entry accepts a path or an object of entries. We'll be using the
+  // latter form given it's convenient with more complex configurations.
+  entry: {
+    app: PATHS.js
+  },
+  output: {
+    path: PATHS.build,
+    filename: 'bundle.js'
+  }
+};
+
+// Default configuration
+if(TARGET === 'start' || !TARGET) {
+  module.exports = merge(common, {});
+}
+
+if(TARGET === 'build') {
+  module.exports = merge(common, {});
+}
+```
+
+<details>
+<summary>
+What is this doing??
+</summary>
+<br>
+
+```
+Depending on the command we run (start, or build) we will be merging the 'common' object with whatever we include in the empty objects
+```
+<br>
+<br>
+</details>
+
+Now all we are missing is adding in the HMR. Let's edit the first `if` statement to include this:
+
+```js
+if(TARGET === 'start' || !TARGET) {
+  module.exports = merge(common, {
+    devServer: {
+      contentBase: PATHS.build,
+      // Enable history API fallback so HTML5 History API based
+      // routing works. This is a good default that will come
+      // in handy in more complicated setups.
+      historyApiFallback: true,
+      hot: true,
+      inline: true,
+      progress: true,
+      // Display only errors to reduce the amount of output.
+      stats: 'errors-only',
+      // Parse host and port from env so this is easy to customize.
+      // If you use Vagrant or Cloud9, set
+      // host: process.env.HOST || '0.0.0.0';
+      // 0.0.0.0 is available to all network devices unlike default
+      // localhost
+      host: process.env.HOST,
+      port: process.env.PORT
+    },
+    plugins: [
+      new webpack.HotModuleReplacementPlugin()
+    ]
+  });
+}
+```
+
+And remove ` --content-base build` from your `package.json`
+
+**COOL**. Everytime we make a change to the js file and save the browser is automatically updated!
 
 ## Travis
 
