@@ -162,6 +162,7 @@ Done.
 ```
 ### You-do: Grunt SASS (25 min)
 
+
 ## Webpack
 
 [Webpack Documentation](https://webpack.github.io/)
@@ -174,7 +175,34 @@ In essence, it takes your code, transforms and bundles it, then returns a brand 
 
 We will be using Webpack with React!
 
-## I-DO: Initial Webpack Installation
+## You-do: Setup
+
+Checkout back to the starter branch of Bamsay, and then `git checkout -b <branch name>` to a new branch.
+
+run: `npm install webpack --save-dev`
+
+Try testing it out by running `webpack` in the terminal
+>if that doesn't work, try `node_modules/.bin/webpack`
+
+You should see something like:
+
+```bash
+webpack 1.12.12
+Usage: https://webpack.github.io/docs/cli.html
+
+Options:
+  --help, -h, -?
+  --config
+  --context
+  --entry
+...
+  --display-cached-assets
+  --display-reasons, --verbose, -v
+
+Output filename not configured.
+```
+
+## We-Do: Initial Webpack Installation
 
 Each loader is an object, the first key value pair is what type of file you want to apply it to, ex anything that ends in `.js`, and what types of files do we not want to. The last one, we want to apply loader(package),
 
@@ -213,3 +241,4 @@ Finally, in package.json, we need to add this to our scripts key:
 
 [Grunt Tutorial](http://www.brianchu.com/blog/2013/07/11/grunt-by-example-a-tutorial-for-javascripts-task-runner/)
 [Travis](https://travis-ci.org/)
+[Webpack as middleware](https://webpack.github.io/docs/webpack-dev-middleware.html)
