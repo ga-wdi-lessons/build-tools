@@ -349,7 +349,7 @@ Finally, we will be integrating all the tasks to help automate our workflow.
 ```bash
 $  npm install --save-dev gulp-watch
 
-$ npm install --save-dev gulp-watch.
+$ npm install --save-dev gulp-connect.
 
 ```
 
