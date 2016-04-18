@@ -482,7 +482,7 @@ webpack is known as a "code bundler". It is used to bundle JavaScript files to r
 
 In essence, it takes your code, transforms and bundles it, then returns a brand new version of your code.
 
-We will be using Webpack with React!
+We will be using Webpack with React! You will see that React uses something called JSX, which leads to a fairly large cost in size. Webpack alleviates this somewhat by compiling and bundling the code together.
 
 While Gulp is known as a "task runner", webpack does a little more. Task runners will compile your code as shown in the previous section. Webpack similarly can compile code, but takes things a step further by *bundling* modules and files together. What does that mean exactly?
 
