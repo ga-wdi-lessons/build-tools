@@ -9,6 +9,8 @@
 
 ## Framing (5 min)
 
+Build Tools are software that allows us to speed up and automate our work, including compiling our code, minification, concatenation, server automatic browser reloading, etc..
+
 <details>
 <summary>
 Q. What is minified code and why do we do it use it?</summary>
@@ -28,7 +30,7 @@ Q. When have you seen minified code before?</summary>
 <br>
 
 ```
-CDN files
+CDNs
 ```
 <br>
 <br>
@@ -54,7 +56,7 @@ In summary, build tools help us to compile our code so we don't have to do it ma
 
 ![Gulp](gulp.jpg)
 
-Gulp is an popular open-source automation tool built on Node.js that runs tasks to manipulate files on your system.
+Gulp is an popular open-source automation tool built on Node.js that runs tasks to manipulate files in your application.
 
 It is commonly used for bundling, minificiation, ES6 support, etc..
 
@@ -79,7 +81,7 @@ Fork and Clone this Repo: https://github.com/ga-wdi-exercises/gulp-bamsay
 
 [Solution Code](https://github.com/ga-wdi-exercises/gulp-bamsay/tree/jshint-solution)
 
-### Installation
+### Gulp Installation
 
 ```bash
 $ npm install gulp -g
@@ -99,6 +101,8 @@ $ npm install gulp --save-dev
 $ touch `gulpfile.js`
 ```
 >This needs to be installed in your root directory and will contain all of your related task configuration
+
+Now let's run gulp in our terminal:
 
 ```bash
 $ gulp
@@ -123,8 +127,7 @@ Q. What is a task?</summary>
 
 ```
 
-In Gulp, we create tasks that can transform our code.
-A task may perform one job, or it can perform many at once.
+In Gulp, we create tasks that can transform our code. `gulp.task` is a method which we use to define our tasks. Its arguments are the task name, it's dependencies and callback function.
 
 ```
 <br>
@@ -134,6 +137,12 @@ A task may perform one job, or it can perform many at once.
 ----------
 
 In our `gulpfile.js` we need to include the gulp module. To do this, we should define a variable: `var gulp = require('gulp');` This will allow us to call upon Gulp to create a task.
+
+
+```js
+var gulp = require('gulp');
+
+```
 
 ### My First (Default) Task
 
@@ -171,14 +180,13 @@ Q. Does the string `'default'` matter what we call it?
 <br>
 
 ```
-Yes, and no. While you can certainly change `default` to `pizza`, it would not be very descriptive of the task.
+Yes, and no. While you can certainly change `default` to `wombat`, it would not be very descriptive of the task.
 
-Also, whatever you define 'name' as in your task: gulp.task('name', callbackFunction)
-
-You need to run the following in our command line:
+Also, whatever you define 'name' as in your task: gulp.task('name', callbackFunction), you also need to run the following in the command line:
 
 $ gulp <name>
 
+If our task's name is `default`, we can just run `$ gulp`
 ```
 <br>
 <br>
@@ -256,7 +264,9 @@ Q. What do you think `'./js/*.js'` represents ?
 <br>
 
 ```
-Linting all of of javascript files in our `js` directory
+The * is looking for any file ending in `.js` in the specified directory.
+
+Essentially, it's linting all of of javascript files in our `js` directory
 
 ```
 <br>
@@ -305,7 +315,7 @@ We are going to be using the following `gulp-sass` plugin.
 
 [Gulp-Sass](https://www.npmjs.com/package/gulp-sass).
 
-Feel free to continue along on the same `gulpfile.js`. However, always feel free to checkout to `linter-solution` as well for working code.
+Feel free to continue along on the same `gulpfile.js`. However, always feel free to checkout to `jshint-solution` as well for working code.
 
 First, let's install and save our plugin:
 
@@ -403,7 +413,9 @@ Q. What `gulp.watch()` doing ?
 <br>
 
 ```
-"watching" our sass file for changes
+
+It's a method that checks to see if a file was saved.  It's "watching" our sass file for changes.
+
 ```
 <br>
 <br>
@@ -417,7 +429,9 @@ Q. What is `connect.server({livereload: true})` doing?
 <br>
 
 ```
-Reloading without manually writing a command in terminal
+
+Reloading and Refreshing our browser without us have to do so manually. It's going to start up a web server that will allows us to reload our complied files and refresh our browser automatically.
+
 ```
 <br>
 <br>
