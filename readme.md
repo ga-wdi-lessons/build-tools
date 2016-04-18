@@ -220,7 +220,7 @@ Let's Review and Answer questions!
 
 Let's get more practice writing gulp `tasks`. Let's write a task that will console.log today's date once's it run.
 
-[See Solution]('https://github.com/ga-wdi-lessons/build-tools/gulpDateTask.js')
+[See Solution](https://github.com/ga-wdi-lessons/build-tools/blob/joe_updates/gulpDateTask.js)
 
 ## Plugins (5 min)
 
