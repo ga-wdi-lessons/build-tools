@@ -527,6 +527,7 @@ In short, it allows for faster development.  Task runners like Gulp and Grunt ne
 
 `git checkout webpack_starter`
 
+run: `npm install -g webpack`
 run: `npm install webpack --save-dev`
 
 Try testing it out by running `webpack` in the terminal
