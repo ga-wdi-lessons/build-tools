@@ -474,7 +474,7 @@ Because we used `default`, gulp will automatically execute the `default` command
 
 ```
 
-## Webpack
+## Webpack (10 mins)
 
 [Webpack Documentation](https://webpack.github.io/)
 
@@ -527,9 +527,9 @@ We haven't configured what we actually want to do with webpack yet!
 <br>
 </details>
 
-## STOP
+## STOP (5 mins)
 
-### You Do: Configuring the Webpack
+### You Do: Configuring the Webpack (10 mins)
 
 To actually configure our webpack, we need to create a new file in the root of our directory: `webpack.config.js`
 
@@ -596,13 +596,13 @@ Lastly, we will need to define the output. Where are we going to put thebundled 
 
 Check out your public folder and see what file was added in!
 
-## STOP
-
-### Setting up Webpack Server
+## STOP (10 mins)
 
 Having to run `webpack` every time you make a change will get frustrating (and boring) quickly. We can set up the `webpack-dev-server` to help us out!
 
 One of the best features of the dev server is [Hot Module Replacement](https://webpack.github.io/docs/hot-module-replacement.html) (HMR). This is a feature provided by webpack that will update specific modules live. In other words, we can potentially update specific parts of our app without having the refresh the entire page!
+
+### You Do: Setting up Webpack Server (10 mins)
 
 To get started, run the following in you command line:
 
@@ -706,7 +706,7 @@ And remove ` --content-base build` from your `package.json`
 
 **COOL**. Everytime we make a change to the js file and save the browser is automatically updated!
 
-## You Do: Add in CSS watch!
+## You Do: Add in CSS watch! (10 mins)
 
 We already have the setup done, so adding in CSS watch is simple!
 
@@ -737,14 +737,28 @@ If you run it now, an error about "Promise" will pop up. This is an ES6 bug that
 
 `var Promise = require('es6-promise').Promise;`
 
-Something still seems off.. Notice the `include:`.  That is pointing to a `PATHS.css`, but we haven't created that yet! Let's go ahead and add that in.  Inside your PATHS object, add `css: path.join(__dirname, 'css')`. Then, within your `common.entry` include `css: PATHS.css`
+Something still seems off.. Notice the `include:`.  That is pointing to a `PATHS.css`, but we haven't created that yet! Let's go ahead and add that in.  
+
+<details>
+<summary>
+Try to think about what to do here before looking at the answer!
+</summary>
+<br>
+
+```
+Inside your PATHS object, add `css: path.join(__dirname, 'css')`. Then, within your `common.entry` include `css: PATHS.css`
+```
+<br>
+<br>
+</details>
 
 Go to your `style.css` and change the background to green, what happens?? Notice how the page does *not* refresh!
 
 ### Bonus: Figure out SASS configuration
 
-
 ## Closing (5 min)
+
+Example of Grunt in the "wild"
 
 ## Quiz Questions:
 
@@ -753,6 +767,8 @@ Go to your `style.css` and change the background to green, what happens?? Notice
 3. Where do we save all of our Gulp dependencies?
 4. What is the difference between `gulp.src()` and `gulp.dest()`?
 5. What does the `gulp connect` plugin allows us to do?
+6. How do Gulp and Webpack differ?
+7. Why does webpack work well with React?
 
 ### Additional Resources
 
