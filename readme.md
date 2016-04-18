@@ -9,13 +9,15 @@
 
 ## Framing (5 min)
 
+Build Tools are software that allows us to speed up and automate our work, including compiling our code, minification, concatenation, server automatic browser reloading, etc..
+
 <details>
 <summary>
 Q. What is minified code and why do we do it use it?</summary>
 <br>
 
 ```
-Code in which all unnecessary characters have been removed from source code without changing its functionality at all.
+Code in which all unnecessary characters have been removed from source code without changing its functionality at all. It allows for a faster response and significantly reduces the size of the code, requiring less bandwidth.
 ```
 <br>
 <br>
@@ -28,7 +30,8 @@ Q. When have you seen minified code before?</summary>
 <br>
 
 ```
-CDN files
+CDNs, jQuery, Angular
+
 ```
 <br>
 <br>
@@ -41,11 +44,27 @@ Q. What is complied code and what is used for?</summary>
 <br>
 
 ```
-Taking things like SASS, CoffeeScript, HAML, etc and converting it into css/html/javascript so our browser knows how to read it!
+
+Taking preprocessors like SASS, CoffeeScript, HAML, etc and converting it into css/html/javascript so our browser knows how to read it!
+
 ```
 <br>
 <br>
 </details>
+
+
+<details>
+<summary>
+Q. What tool did we use in Rails to help concatenate and minify our JS and CSS?</summary>
+<br>
+
+```
+Rails Asset Pipeline, which helped to concatenate all JS and CSS files into one, allowing us to speed up our application and serving of static files.
+```
+<br>
+<br>
+</details>
+
 
 ---------
 In summary, build tools help us to compile our code so we don't have to do it manually and repeatedly.
@@ -54,7 +73,7 @@ In summary, build tools help us to compile our code so we don't have to do it ma
 
 ![Gulp](gulp.jpg)
 
-Gulp is an popular open-source automation tool built on Node.js that runs tasks to manipulate files on your system.
+Gulp is an popular open-source automation tool built on Node.js that runs tasks to manipulate files in your application.
 
 It is commonly used for bundling, minificiation, ES6 support, etc..
 
@@ -79,7 +98,7 @@ Fork and Clone this Repo: https://github.com/ga-wdi-exercises/gulp-bamsay
 
 [Solution Code](https://github.com/ga-wdi-exercises/gulp-bamsay/tree/jshint-solution)
 
-### Installation
+### Gulp Installation
 
 ```bash
 $ npm install gulp -g
@@ -99,6 +118,8 @@ $ npm install gulp --save-dev
 $ touch `gulpfile.js`
 ```
 >This needs to be installed in your root directory and will contain all of your related task configuration
+
+Now let's run gulp in our terminal:
 
 ```bash
 $ gulp
@@ -123,8 +144,7 @@ Q. What is a task?</summary>
 
 ```
 
-In Gulp, we create tasks that can transform our code.
-A task may perform one job, or it can perform many at once.
+In Gulp, we create tasks that can transform our code. `gulp.task` is a method which we use to define our tasks. Its arguments are the task name, it's dependencies and callback function.
 
 ```
 <br>
@@ -134,6 +154,12 @@ A task may perform one job, or it can perform many at once.
 ----------
 
 In our `gulpfile.js` we need to include the gulp module. To do this, we should define a variable: `var gulp = require('gulp');` This will allow us to call upon Gulp to create a task.
+
+
+```js
+var gulp = require('gulp');
+
+```
 
 ### My First (Default) Task
 
@@ -171,14 +197,13 @@ Q. Does the string `'default'` matter what we call it?
 <br>
 
 ```
-Yes, and no. While you can certainly change `default` to `pizza`, it would not be very descriptive of the task.
+Yes, and no. While you can certainly change `default` to `wombat`, it would not be very descriptive of the task.
 
-Also, whatever you define 'name' as in your task: gulp.task('name', callbackFunction)
-
-You need to run the following in our command line:
+Also, whatever you define 'name' as in your task: gulp.task('name', callbackFunction), you also need to run the following in the command line:
 
 $ gulp <name>
 
+If our task's name is `default`, we can just run `$ gulp`
 ```
 <br>
 <br>
@@ -202,6 +227,8 @@ Let's get more practice writing gulp `tasks`. Let's write a task that will conso
 [Gulp plugins](http://gulpjs.com/plugins/)
 
 Gulp has many additional plugins that we can use in our applications. We need to install them each individually using `npm install <dependency-name> --save-dev`
+
+## Break (10 min)
 
 ## You-Do: Jshint Plugin Example (15 min)
 
@@ -254,7 +281,9 @@ Q. What do you think `'./js/*.js'` represents ?
 <br>
 
 ```
-Linting all of of javascript files in our `js` directory
+The * is looking for any file ending in `.js` in the specified directory.
+
+Essentially, it's linting all of of javascript files in our `js` directory
 
 ```
 <br>
@@ -285,8 +314,6 @@ $ gulp jshint
 ```
 >Note, we can also add this as our `default` task. Then, we would simply run `$ gulp` instead.
 
-## Bonus
-
 ## STOP
 
 ## Review (5 min)
@@ -297,13 +324,13 @@ Let's Review and Answer questions!
 
 ### Gulp-Sass
 
-Let's use Gulp to compile our `sass`!
+Let's use Gulp to compile our `sass` into `css`!
 
 We are going to be using the following `gulp-sass` plugin.
 
 [Gulp-Sass](https://www.npmjs.com/package/gulp-sass).
 
-Feel free to continue along on the same `gulpfile.js`. However, always feel free to checkout to `linter-solution` as well for working code.
+Feel free to continue along on the same `gulpfile.js`. However, always feel free to checkout to `jshint-solution` as well for working code.
 
 First, let's install and save our plugin:
 
@@ -340,7 +367,7 @@ Q. What do we see here in this task thats different?
 
 2. gulp.dest()
 
-* `gulp.dest` will copies our results to a given directory. In this case to our `css` directory.
+* `gulp.dest` will copy our results to a given directory. In this case to our `css` directory.
 
 ```
 <br>
@@ -353,7 +380,10 @@ $ gulp sass
 ```
 Great, it worked! But how is that helpful to our workflow?
 
+>While Gulp does a great job of executing these types of tasks well, it becomes extremely powerful when we start compose these different tasks together.
+
 ### Gulp Watch & Connect
+
 
 We are going to add these two dependencies as well! Our goal is for us to see any reflected sass changes without manually reloading the server or refreshing our browser.
 
@@ -365,7 +395,7 @@ Finally, we will be integrating all the tasks to help automate our workflow at t
 
 
 ```bash
-$  npm install gulp-watch --save-dev
+$ npm install gulp-watch --save-dev
 
 $ npm install gulp-connect --save-dev
 
@@ -401,7 +431,9 @@ Q. What `gulp.watch()` doing ?
 <br>
 
 ```
-"watching" our sass file for changes
+
+It's a method that checks to see if a file was saved.  It's "watching" our sass file for changes.
+
 ```
 <br>
 <br>
@@ -415,7 +447,9 @@ Q. What is `connect.server({livereload: true})` doing?
 <br>
 
 ```
-Reloading without manually writing a command in terminal
+
+Reloading and Refreshing our browser without us have to do so manually. It's going to start up a web server that will allows us to reload our complied files and refresh our browser automatically.
+
 ```
 <br>
 <br>
@@ -473,6 +507,7 @@ Because we used `default`, gulp will automatically execute the `default` command
 [13:25:59] Finished 'default' after 3.63 μs
 
 ```
+## Break (10 min)
 
 ## Webpack (10 mins)
 
