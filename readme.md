@@ -59,7 +59,7 @@ Q. What tool did we use in Rails to help concatenate and minify our JS and CSS?<
 <br>
 
 ```
-Rails Asset Pipeline, which helped to concatenate all JS and CSS files into one, allowing us to speed up application and serving of static files.
+Rails Asset Pipeline, which helped to concatenate all JS and CSS files into one, allowing us to speed up our application and serving of static files.
 ```
 <br>
 <br>
@@ -326,7 +326,7 @@ Let's Review and Answer questions!
 
 ### Gulp-Sass
 
-Let's use Gulp to compile our `sass`!
+Let's use Gulp to compile our `sass` into `css`!
 
 We are going to be using the following `gulp-sass` plugin.
 
@@ -382,7 +382,10 @@ $ gulp sass
 ```
 Great, it worked! But how is that helpful to our workflow?
 
+>While Gulp does a great job of executing these types of tasks well, it becomes extremely powerful when we start compose these different tasks together. 
+
 ### Gulp Watch & Connect
+
 
 We are going to add these two dependencies as well! Our goal is for us to see any reflected sass changes without manually reloading the server or refreshing our browser.
 
@@ -394,7 +397,7 @@ Finally, we will be integrating all the tasks to help automate our workflow at t
 
 
 ```bash
-$  npm install gulp-watch --save-dev
+$ npm install gulp-watch --save-dev
 
 $ npm install gulp-connect --save-dev
 
