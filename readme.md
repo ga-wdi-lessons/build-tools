@@ -17,7 +17,7 @@ Q. What is minified code and why do we do it use it?</summary>
 <br>
 
 ```
-Code in which all unnecessary characters have been removed from source code without changing its functionality at all.
+Code in which all unnecessary characters have been removed from source code without changing its functionality at all. It allows for a faster response and significantly reduces the size of the code, requiring less bandwidth.
 ```
 <br>
 <br>
@@ -30,7 +30,8 @@ Q. When have you seen minified code before?</summary>
 <br>
 
 ```
-CDNs
+CDNs, jQuery, Angular
+
 ```
 <br>
 <br>
@@ -43,11 +44,27 @@ Q. What is complied code and what is used for?</summary>
 <br>
 
 ```
-Taking things like SASS, CoffeeScript, HAML, etc and converting it into css/html/javascript so our browser knows how to read it!
+
+Taking preprocessors like SASS, CoffeeScript, HAML, etc and converting it into css/html/javascript so our browser knows how to read it!
+
 ```
 <br>
 <br>
 </details>
+
+
+<details>
+<summary>
+Q. What tool did we use in Rails to help concatenate and minify our JS and CSS?</summary>
+<br>
+
+```
+Rails Asset Pipeline, which helped to concatenate all JS and CSS files into one, allowing us to speed up application and serving of static files.
+```
+<br>
+<br>
+</details>
+
 
 ---------
 In summary, build tools help us to compile our code so we don't have to do it manually and repeatedly.
@@ -352,7 +369,7 @@ Q. What do we see here in this task thats different?
 
 2. gulp.dest()
 
-* `gulp.dest` will copies our results to a given directory. In this case to our `css` directory.
+* `gulp.dest` will copy our results to a given directory. In this case to our `css` directory.
 
 ```
 <br>
