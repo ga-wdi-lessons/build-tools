@@ -314,8 +314,6 @@ $ gulp jshint
 ```
 >Note, we can also add this as our `default` task. Then, we would simply run `$ gulp` instead.
 
-## Bonus
-
 ## STOP
 
 ## Review (5 min)
@@ -382,7 +380,7 @@ $ gulp sass
 ```
 Great, it worked! But how is that helpful to our workflow?
 
->While Gulp does a great job of executing these types of tasks well, it becomes extremely powerful when we start compose these different tasks together. 
+>While Gulp does a great job of executing these types of tasks well, it becomes extremely powerful when we start compose these different tasks together.
 
 ### Gulp Watch & Connect
 
